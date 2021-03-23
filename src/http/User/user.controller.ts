@@ -64,7 +64,7 @@ export const logInUser = async (req: Request, res: Response) => {
 
       if (!passNotHash) return responseHandler(res, { message: 'Email or password is invalid' }, 400, false);
 
-      const token = jwt.sign({ payload: userFind }, process.env.SECRET_JWT || 'secret', { expiresIn: '7d' });
+      const token = jwt.sign({ payload: userFind }, process.env.SECRET_JWT || '', { expiresIn: '7d' });
 
       return res.status(200).json({ ok: true, data: userFind, token });
 

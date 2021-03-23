@@ -5,7 +5,7 @@ import { date } from '../../libs/dateOrder';
 import { responseHandler } from '../../libs/responseHandler';
 
 
-export const newRequest = async (req: Request, res: Response) => {
+export const newRequest = async (req: any, res: Response) => {
 
    const { id_people } = req.user;
 

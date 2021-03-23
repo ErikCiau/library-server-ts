@@ -3,12 +3,11 @@ import * as jwt from 'jsonwebtoken';
 import { responseHandler } from '../libs/responseHandler';
 
 
-
-export const AuthToken = async (req: Request, res: Response, next: Function) => {
+export const AuthToken = async (req: any, res: Response, next: Function) => {
    let token: string | any = req.get('token');
 
    const secret: jwt.Secret = process.env.SECRET_JWT || 'secret';
-   jwt.verify(token, secret, {}, (err, decode) => {
+   jwt.verify(token, secret, {}, (err, decode: any) => {
 
       if (err) return responseHandler(res, err, 403, false);
 

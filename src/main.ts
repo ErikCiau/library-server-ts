@@ -8,7 +8,6 @@ if (process.env.NODE_ENV !== 'production') {
    dotenv.config();
 }
 
-
 const server = new Server()
 
 server.listen();

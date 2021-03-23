@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import cors, { CorsOptions } from 'cors';
 import db from './config/dbConnection';
-
+import dotenv from 'dotenv';
 import router from './router';
 
 class Server {
@@ -10,10 +10,15 @@ class Server {
    private port: string;
    private configCors: CorsOptions = { origin: "*", methods: ['GET', 'POST', 'PUT'] };
 
+   private dotenv = dotenv;
 
    private versionApi = 'v3';
 
    constructor() {
+
+      if (process.env.NODE_ENV !== 'production') {
+         this.dotenv.config();
+      }
       this.app = express();
       this.port = process.env.PORT || '3000';
 
